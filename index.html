@@ -179,7 +179,8 @@
       
         <a id="more"></a>
 <h1 id="一、-java三层架构"><a href="#一、-java三层架构" class="headerlink" title="一、 java三层架构"></a>一、 java三层架构</h1><h3 id="业务层（逻辑层、service层）"><a href="#业务层（逻辑层、service层）" class="headerlink" title="业务层（逻辑层、service层）"></a>业务层（逻辑层、service层）</h3><p>采用事务脚本模式。将一个业务中所有的操作封装成一个方法，同时保证方法中所有的数据库更新操作，即保证同时成功或同时失败。避免部分成功部分失败引起的数据混乱操作。</p>
-<h3 id="表现层（JSP）"><a href="#表现层（JSP）" class="headerlink" title="表现层（JSP）"></a>表现层（JSP）</h3><p>采用MVC模式。<br>M称为模型，也就是实体类。用于数据的封装和数据的传输。<br>V为视图，也就是GUI组件，用于数据的展示。<br>C为控制，也就是事件，用于流程的控制。</p>
+<h3 id="表现层（JSP）"><a href="#表现层（JSP）" class="headerlink" title="表现层（JSP）"></a>表现层（JSP）</h3><!--more-->
+<p>采用MVC模式。<br>M称为模型，也就是实体类。用于数据的封装和数据的传输。<br>V为视图，也就是GUI组件，用于数据的展示。<br>C为控制，也就是事件，用于流程的控制。</p>
 <h3 id="持久层（DAO）"><a href="#持久层（DAO）" class="headerlink" title="持久层（DAO）"></a>持久层（DAO）</h3><p>采用DAO模式，建立实体类和数据库表映射（ORM映射）。也就是哪个类对应哪个表，哪个属性对应哪个列。持久层的目的就是，完成对象数据和关系数据的转换。</p>
 <h1 id="二、SSH框架"><a href="#二、SSH框架" class="headerlink" title="二、SSH框架"></a>二、SSH框架</h1><p>业务层——Spring<br>表现层——Struts<br>持久层——Hibernate</p>
 <h1 id="三、SSM框架"><a href="#三、SSM框架" class="headerlink" title="三、SSM框架"></a>三、SSM框架</h1><p>业务层——Spring<br>表现层——SpringMVC<br>持久层——MyBatis<br>业务层调用持久层,表现层调用业务层</p>
