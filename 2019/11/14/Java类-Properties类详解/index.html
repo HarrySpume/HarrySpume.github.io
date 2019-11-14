@@ -8,14 +8,14 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Java类-Properties类详解 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="概述Properties 继承于 Hashtable。表示一个持久的属性集，属性列表以key-value的形式存在，key和value都是字符串。Properties 类被许多Java类使用。例如，在获取环境变量时它就作为System.getProperties()方法的返回值。 我们在很多需要避免硬编码的应用场景下需要使用properties文件来加载程序需要的配置信息，比如JDBC、MyBa">
+  <meta name="description" content="概述Properties 继承于 Hashtable。表示一个持久的属性集，属性列表以key-value的形式存在，key和value都是字符串。Properties 类被许多Java类使用。例如，在获取环境变量时它就作为System.getProperties()方法的返回值。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java类-Properties类详解">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;14&#x2F;Java%E7%B1%BB-Properties%E7%B1%BB%E8%AF%A6%E8%A7%A3&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="概述Properties 继承于 Hashtable。表示一个持久的属性集，属性列表以key-value的形式存在，key和value都是字符串。Properties 类被许多Java类使用。例如，在获取环境变量时它就作为System.getProperties()方法的返回值。 我们在很多需要避免硬编码的应用场景下需要使用properties文件来加载程序需要的配置信息，比如JDBC、MyBa">
+<meta property="og:description" content="概述Properties 继承于 Hashtable。表示一个持久的属性集，属性列表以key-value的形式存在，key和value都是字符串。Properties 类被许多Java类使用。例如，在获取环境变量时它就作为System.getProperties()方法的返回值。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-14T08:31:50.337Z">
+<meta property="og:updated_time" content="2019-11-14T08:34:29.102Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -183,8 +183,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Properties 继承于 Hashtable。表示一个持久的属性集，属性列表以key-value的形式存在，key和value都是字符串。<br>Properties 类被许多Java类使用。例如，在获取环境变量时它就作为System.getProperties()方法的返回值。</p>
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Properties 继承于 Hashtable。表示一个持久的属性集，属性列表以key-value的形式存在，key和value都是字符串。<br>Properties 类被许多Java类使用。例如，在获取环境变量时它就作为System.getProperties()方法的返回值。</p>
+<a id="more"></a>
 <p>我们在很多需要避免硬编码的应用场景下需要使用properties文件来加载程序需要的配置信息，比如JDBC、MyBatis框架等。Properties类则是properties文件和程序的中间桥梁，不论是从properties文件读取信息还是写入信息到properties文件都要经由Properties类。</p>
 <h1 id="首先需要配置properties文件-创建-properties文件"><a href="#首先需要配置properties文件-创建-properties文件" class="headerlink" title="首先需要配置properties文件,创建.properties文件"></a>首先需要配置properties文件,创建.properties文件</h1><p>properties文件中的内容以键值对的形式展现<br>配置的内容:唯一标识取出类 = 全限定类名(项目名+包名+类名) key - value</p>
 <h1 id="常见方法"><a href="#常见方法" class="headerlink" title="常见方法"></a>常见方法</h1><p>通过jkd1.8的文档,列出常用方法</p>
