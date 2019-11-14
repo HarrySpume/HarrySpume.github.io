@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="概述Properties 继承于 Hashtable。表示一个持久的属性集，属性列表以key-value的形式存在，key和value都是字符串。Properties 类被许多Java类使用。例如，在获取环境变量时它就作为System.getProperties()方法的返回值。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-14T08:50:14.176Z">
+<meta property="og:updated_time" content="2019-11-14T08:55:47.460Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -210,8 +210,7 @@
 <li>Object setProperty(String key, String value) </li>
 <li>致电 Hashtable方法 put 。 </li>
 </ul>
-<h1 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h1><p>‘’’<br>//创建Properties对象<br>private static Properties props;<br>//根据Properties配置文件创建流<br>InputStream in = BeanFactory.class.getClassLoader().getResourceAsStream(“bean.properties”);<br>//加载流的办法<br>props.load(in);<br>String beanName = “”;<br>//通过类加载器创建对象<br>Object bean = Class.forName(props.getProperty(beanName)).newInstance();</p>
-<p>‘’’</p>
+<h1 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建Properties对象</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> Properties props;</span><br><span class="line"><span class="comment">//根据Properties配置文件创建流</span></span><br><span class="line">InputStream in = BeanFactory.class.getClassLoader().getResourceAsStream("bean.properties");</span><br><span class="line"><span class="comment">//加载流的办法</span></span><br><span class="line">props.load(in);</span><br><span class="line">String beanName = <span class="string">""</span>;</span><br><span class="line"><span class="comment">//通过类加载器创建对象</span></span><br><span class="line">Object bean = Class.forName(props.getProperty(beanName)).newInstance();</span><br></pre></td></tr></table></figure>
 
       
 
