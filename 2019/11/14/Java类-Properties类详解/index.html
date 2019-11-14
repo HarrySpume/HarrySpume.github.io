@@ -6,16 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>我的第一篇博客 | Hexo</title>
+  <title>Java类-Properties类详解 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##第一章 内容  ##第二章 内容  ##参考文献">
+  <meta name="description" content="概述Properties 继承于 Hashtable。表示一个持久的属性集，属性列表以key-value的形式存在，key和value都是字符串。Properties 类被许多Java类使用。例如，在获取环境变量时它就作为System.getProperties()方法的返回值。 我们在很多需要避免硬编码的应用场景下需要使用properties文件来加载程序需要的配置信息，比如JDBC、MyBa">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我的第一篇博客">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;11&#x2F;%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2&#x2F;index.html">
+<meta property="og:title" content="Java类-Properties类详解">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;14&#x2F;Java%E7%B1%BB-Properties%E7%B1%BB%E8%AF%A6%E8%A7%A3&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="##第一章 内容  ##第二章 内容  ##参考文献">
+<meta property="og:description" content="概述Properties 继承于 Hashtable。表示一个持久的属性集，属性列表以key-value的形式存在，key和value都是字符串。Properties 类被许多Java类使用。例如，在获取环境变量时它就作为System.getProperties()方法的返回值。 我们在很多需要避免硬编码的应用场景下需要使用properties文件来加载程序需要的配置信息，比如JDBC、MyBa">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-11T04:48:28.672Z">
+<meta property="og:updated_time" content="2019-11-14T08:31:50.337Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -156,14 +156,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-我的第一篇博客" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Java类-Properties类详解" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      我的第一篇博客
+      Java类-Properties类详解
     </h1>
   
 
@@ -175,21 +175,41 @@
         </span>
 
 
-<a href="/2019/11/11/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2019-11-11T04:03:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-11</time>
+<a href="/2019/11/14/Java%E7%B1%BB-Properties%E7%B1%BB%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
+  	<time datetime="2019-11-14T08:16:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##第一章</p>
-<p>内容</p>
-<hr>
-<p>##第二章</p>
-<p>内容</p>
-<hr>
-<p>##参考文献</p>
+        <a id="more"></a>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Properties 继承于 Hashtable。表示一个持久的属性集，属性列表以key-value的形式存在，key和value都是字符串。<br>Properties 类被许多Java类使用。例如，在获取环境变量时它就作为System.getProperties()方法的返回值。</p>
+<p>我们在很多需要避免硬编码的应用场景下需要使用properties文件来加载程序需要的配置信息，比如JDBC、MyBatis框架等。Properties类则是properties文件和程序的中间桥梁，不论是从properties文件读取信息还是写入信息到properties文件都要经由Properties类。</p>
+<h1 id="首先需要配置properties文件-创建-properties文件"><a href="#首先需要配置properties文件-创建-properties文件" class="headerlink" title="首先需要配置properties文件,创建.properties文件"></a>首先需要配置properties文件,创建.properties文件</h1><p>properties文件中的内容以键值对的形式展现<br>配置的内容:唯一标识取出类 = 全限定类名(项目名+包名+类名) key - value</p>
+<h1 id="常见方法"><a href="#常见方法" class="headerlink" title="常见方法"></a>常见方法</h1><p>通过jkd1.8的文档,列出常用方法</p>
+<ul>
+<li>构造方法</li>
+<li>Properties()</li>
+<li>创建一个没有默认值的空属性列表。</li>
+<li>Properties(Properties defaults)</li>
+<li>创建具有指定默认值的空属性列表。</li>
+<li>所有方法</li>
+<li>String getProperty(String key)</li>
+<li>使用此属性列表中指定的键搜索属性。 </li>
+<li>String getProperty(String key, String defaultValue) </li>
+<li>使用此属性列表中指定的键搜索属性。  </li>
+<li>void list(PrintStream out) </li>
+<li>将此属性列表打印到指定的输出流。  </li>
+<li>void list(PrintWriter out) </li>
+<li>将此属性列表打印到指定的输出流。  </li>
+<li>void load(InputStream inStream) </li>
+<li>从输入字节流读取属性列表（键和元素对）。  </li>
+<li>void load(Reader reader) </li>
+<li>以简单的线性格式从输入字符流读取属性列表（关键字和元素对）。 </li>
+<li>Object setProperty(String key, String value) </li>
+<li>致电 Hashtable方法 put 。 </li>
+</ul>
 
       
 
@@ -279,7 +299,7 @@
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/11/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/14/Java%E7%B1%BB-Properties%E7%B1%BB%E8%AF%A6%E8%A7%A3/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -293,15 +313,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/11/11/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Hello World
-        
-      </div>
-    </a>
   
+    <a href="/2019/11/12/Spring%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%80%E5%A4%A9-%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring框架-三层架构</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 

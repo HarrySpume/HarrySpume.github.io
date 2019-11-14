@@ -18,7 +18,7 @@
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href=" /img/blog.ico">
   
   <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
   <style type="text/css">
@@ -155,6 +155,97 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Java类-Properties类详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/14/Java%E7%B1%BB-Properties%E7%B1%BB%E8%AF%A6%E8%A7%A3/">Java类-Properties类详解</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/11/14/Java%E7%B1%BB-Properties%E7%B1%BB%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
+  	<time datetime="2019-11-14T08:16:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Properties 继承于 Hashtable。表示一个持久的属性集，属性列表以key-value的形式存在，key和value都是字符串。<br>Properties 类被许多Java类使用。例如，在获取环境变量时它就作为System.getProperties()方法的返回值。</p>
+<p>我们在很多需要避免硬编码的应用场景下需要使用properties文件来加载程序需要的配置信息，比如JDBC、MyBatis框架等。Properties类则是properties文件和程序的中间桥梁，不论是从properties文件读取信息还是写入信息到properties文件都要经由Properties类。</p>
+<h1 id="首先需要配置properties文件-创建-properties文件"><a href="#首先需要配置properties文件-创建-properties文件" class="headerlink" title="首先需要配置properties文件,创建.properties文件"></a>首先需要配置properties文件,创建.properties文件</h1><p>properties文件中的内容以键值对的形式展现<br>配置的内容:唯一标识取出类 = 全限定类名(项目名+包名+类名) key - value</p>
+<h1 id="常见方法"><a href="#常见方法" class="headerlink" title="常见方法"></a>常见方法</h1><p>通过jkd1.8的文档,列出常用方法</p>
+<ul>
+<li>构造方法</li>
+<li>Properties()</li>
+<li>创建一个没有默认值的空属性列表。</li>
+<li>Properties(Properties defaults)</li>
+<li>创建具有指定默认值的空属性列表。</li>
+<li>所有方法</li>
+<li>String getProperty(String key)</li>
+<li>使用此属性列表中指定的键搜索属性。 </li>
+<li>String getProperty(String key, String defaultValue) </li>
+<li>使用此属性列表中指定的键搜索属性。  </li>
+<li>void list(PrintStream out) </li>
+<li>将此属性列表打印到指定的输出流。  </li>
+<li>void list(PrintWriter out) </li>
+<li>将此属性列表打印到指定的输出流。  </li>
+<li>void load(InputStream inStream) </li>
+<li>从输入字节流读取属性列表（键和元素对）。  </li>
+<li>void load(Reader reader) </li>
+<li>以简单的线性格式从输入字符流读取属性列表（关键字和元素对）。 </li>
+<li>Object setProperty(String key, String value) </li>
+<li>致电 Hashtable方法 put 。 </li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/14/Java%E7%B1%BB-Properties%E7%B1%BB%E8%AF%A6%E8%A7%A3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Spring框架学习第一天-三层架构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -162,7 +253,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/12/Spring%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%80%E5%A4%A9-%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84/">Spring框架学习第一天-三层架构</a>
+      <a class="article-title" href="/2019/11/12/Spring%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%80%E5%A4%A9-%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84/">Spring框架-三层架构</a>
     </h1>
   
 
