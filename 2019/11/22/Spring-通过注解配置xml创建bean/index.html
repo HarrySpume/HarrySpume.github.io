@@ -6,13 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | Hexo</title>
+  <title>Spring-通过注解配置xml创建bean | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2019&#x2F;index.html">
+  <meta name="description" content="之前介绍过通过标签创建对象,接下来介绍通过注解方式创建bean对象的方式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring-通过注解配置xml创建bean">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;22&#x2F;Spring-%E9%80%9A%E8%BF%87%E6%B3%A8%E8%A7%A3%E9%85%8D%E7%BD%AExml%E5%88%9B%E5%BB%BAbean&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="之前介绍过通过标签创建对象,接下来介绍通过注解方式创建bean对象的方式">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-22T14:09:35.948Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -153,254 +156,204 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Spring-通过注解配置xml创建bean" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Spring-通过注解配置xml创建bean
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+
+        
+        
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
 
 <a href="/2019/11/22/Spring-%E9%80%9A%E8%BF%87%E6%B3%A8%E8%A7%A3%E9%85%8D%E7%BD%AExml%E5%88%9B%E5%BB%BAbean/" class="archive-article-date">
   	<time datetime="2019-11-22T13:49:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-22</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/22/Spring-%E9%80%9A%E8%BF%87%E6%B3%A8%E8%A7%A3%E9%85%8D%E7%BD%AExml%E5%88%9B%E5%BB%BAbean/">Spring-通过注解配置xml创建bean</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前介绍过通过<bean>标签创建对象,接下来介绍通过注解方式创建bean对象的方式</p>
+<a id="more"></a>
+<h1 id="注解总体上分为四种"><a href="#注解总体上分为四种" class="headerlink" title="注解总体上分为四种"></a>注解总体上分为四种</h1><h2 id="1-对象创建"><a href="#1-对象创建" class="headerlink" title="1.对象创建:"></a>1.对象创建:</h2><p>和xml配置文件里的<bean></bean>标签一样<br> @Component<br>      作用:把当前类对象存入spring容器中<br>      属性:<br>           value:用于指定该类的bean在spring容器种的id,默认是当前名,首字母改为小写<br>      @Controller:一般用于表现层<br>      @Service:一般用于业务层<br>      @Repository:一般用于持久层<br>      以上三个注解的作用和属性与Component一摸一样,他们三个是spring框架为我们提供明确的三层使用的注解<br>      使我们的三层对象更加清晰</p>
+<h2 id="2-注入数据"><a href="#2-注入数据" class="headerlink" title="2.注入数据:"></a>2.注入数据:</h2><p>和xml配置文件里的<property></property>子标签一样<br> @Autowired<br>       作用:自动按照类型注入,只要容器中有唯一的bean对象类型和要注入的变量类型匹配,就可以注入成功<br>            如果Ioc容器有多个类型匹配时:(下方代码介绍)<br>       出现位置:<br>           可以是变量上,方法上</p>
+<h2 id="3-改变作用范围"><a href="#3-改变作用范围" class="headerlink" title="3.改变作用范围:"></a>3.改变作用范围:</h2><p>和xml配置文件里的隐含属性scope一样<br> @Scope<br>       作用:指定bean作用范围<br>        属性:<br>            value:指定范围的取值,常用取值:singleton prototype,默认单例</p>
+<h2 id="4-和生命周期有关的"><a href="#4-和生命周期有关的" class="headerlink" title="4.和生命周期有关的:"></a>4.和生命周期有关的:</h2><p>xml配置文件里的init-method,destroy-method一样<br> @PreDestory<br>       作用:用于指定销毁方法<br> @PostConstruct<br>       作用:用于指定初始化方法</p>
+<h2 id="注入数据时遇到的问题"><a href="#注入数据时遇到的问题" class="headerlink" title="注入数据时遇到的问题"></a>注入数据时遇到的问题</h2><h3 id="在使用-Autowired-时自动匹配"><a href="#在使用-Autowired-时自动匹配" class="headerlink" title="在使用  @Autowired 时自动匹配"></a>在使用  <code>@Autowired</code> 时自动匹配</h3><p>在属性或方法上添加该注解,如:<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line">  <span class="keyword">private</span> IAccountDao accountDao2;</span><br></pre></td></tr></table></figure><br> 当IAccountDao接口类只有一个实现类的时候,注解会自动去找实现该接口的类,创建对象放入ioc容器中</p>
+<h3 id="在使用-Autowired-时遇到多个匹配类"><a href="#在使用-Autowired-时遇到多个匹配类" class="headerlink" title="在使用  @Autowired 时遇到多个匹配类"></a>在使用  <code>@Autowired</code> 时遇到多个匹配类</h3><p>在不做处理情况下,系统会报错,因为spring框架不知道去解析哪个类<br>解决办法如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">@Repository(value = &quot;accountDao1&quot;)</span><br><span class="line">public class IAccountDaoImp implements  IAccountDao &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public void saveAcocunt() &#123;</span><br><span class="line">        System.out.println(&quot;保存成功&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">---------------------------------------------------------</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@Repository(value = &quot;accountDao1&quot;)</span><br><span class="line">public class IAccountDaoImp implements  IAccountDao &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public void saveAcocunt() &#123;</span><br><span class="line">        System.out.println(&quot;保存成功&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">----------------------------------------------------------</span><br><span class="line"></span><br><span class="line">@Autowired</span><br><span class="line">    private IAccountDao accountDao2;//如果有多个匹配的类型,会根据变量名(repository的value值)到ioc容器中//匹配</span><br></pre></td></tr></table></figure>
+<p>如果有多个匹配的类型,会根据变量名(在@repository注解的类去找value值)到ioc容器中匹配</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" target="_blank" rel="noopener" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>/assets/img/apply.jpg<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/apply.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/22/Spring-%E9%80%9A%E8%BF%87%E6%B3%A8%E8%A7%A3%E9%85%8D%E7%BD%AExml%E5%88%9B%E5%BB%BAbean/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
 
-<a href="/2019/11/22/Spring-%E5%9F%BA%E4%BA%8Exml%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%88%9B%E5%BB%BAbean/" class="archive-article-date">
-  	<time datetime="2019-11-22T13:39:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-22</time>
-</a>
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/22/Spring-%E5%9F%BA%E4%BA%8Exml%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%88%9B%E5%BB%BAbean/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring-基于xml配置文件创建bean</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/22/Spring-%E5%9F%BA%E4%BA%8Exml%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%88%9B%E5%BB%BAbean/">Spring-基于xml配置文件创建bean</a>
-    </h1>
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NzQ5NC8yMzk5NA==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+  
+  
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-<a href="/2019/11/14/Java%E7%B1%BB-Properties%E7%B1%BB%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2019-11-14T08:16:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/14/Java%E7%B1%BB-Properties%E7%B1%BB%E8%AF%A6%E8%A7%A3/">Java类-Properties类详解</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-<a href="/2019/11/12/Spring%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%80%E5%A4%A9-%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84/" class="archive-article-date">
-  	<time datetime="2019-11-12T15:18:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/12/Spring%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%80%E5%A4%A9-%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84/">Spring框架-三层架构</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-<a href="/2019/11/11/%E5%85%B3%E4%BA%8Etypo-css/" class="archive-article-date">
-  	<time datetime="2019-11-11T13:44:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/11/%E5%85%B3%E4%BA%8Etypo-css/">关于typo.css</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-<a href="/2019/11/11/Markdown%E8%AF%AD%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2019-11-11T12:34:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/11/Markdown%E8%AF%AD%E6%B3%95/">Markdown语法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-<a href="/2019/11/11/hello-world/" class="archive-article-date">
-  	<time datetime="2019-11-11T04:49:14.970Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/11/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-<a href="/2019/11/11/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2019-11-11T04:03:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/11/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">我的第一篇博客</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -434,8 +387,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
