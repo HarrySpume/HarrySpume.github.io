@@ -6,16 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Spring-通过注解配置xml创建bean | Hexo</title>
+  <title>Spring-IOC配置 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="之前介绍过通过标签创建对象,接下来介绍通过注解方式创建bean对象的方式">
+  <meta name="description" content="这里主要介绍两种IOC配置方法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring-通过注解配置xml创建bean">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;22&#x2F;Spring-%E9%80%9A%E8%BF%87%E6%B3%A8%E8%A7%A3%E9%85%8D%E7%BD%AExml%E5%88%9B%E5%BB%BAbean&#x2F;index.html">
+<meta property="og:title" content="Spring-IOC配置">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;30&#x2F;Spring-IOC%E9%85%8D%E7%BD%AE&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="之前介绍过通过标签创建对象,接下来介绍通过注解方式创建bean对象的方式">
+<meta property="og:description" content="这里主要介绍两种IOC配置方法">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-22T14:09:35.948Z">
+<meta property="og:updated_time" content="2019-11-30T13:14:02.255Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -156,14 +156,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Spring-通过注解配置xml创建bean" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Spring-IOC配置" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Spring-通过注解配置xml创建bean
+      Spring-IOC配置
     </h1>
   
 
@@ -175,24 +175,25 @@
         </span>
 
 
-<a href="/2019/11/22/Spring-%E9%80%9A%E8%BF%87%E6%B3%A8%E8%A7%A3%E9%85%8D%E7%BD%AExml%E5%88%9B%E5%BB%BAbean/" class="archive-article-date">
-  	<time datetime="2019-11-22T13:49:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-22</time>
+<a href="/2019/11/30/Spring-IOC%E9%85%8D%E7%BD%AE/" class="archive-article-date">
+  	<time datetime="2019-11-30T12:51:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>之前介绍过通过<bean>标签创建对象,接下来介绍通过注解方式创建bean对象的方式</p>
-<a id="more"></a>
-<h1 id="注解总体上分为四种"><a href="#注解总体上分为四种" class="headerlink" title="注解总体上分为四种"></a>注解总体上分为四种</h1><h2 id="1-对象创建"><a href="#1-对象创建" class="headerlink" title="1.对象创建:"></a>1.对象创建:</h2><p>和xml配置文件里的<bean></bean>标签一样<br> @Component<br>      作用:把当前类对象存入spring容器中<br>      属性:<br>           value:用于指定该类的bean在spring容器种的id,默认是当前名,首字母改为小写<br>      @Controller:一般用于表现层<br>      @Service:一般用于业务层<br>      @Repository:一般用于持久层<br>      以上三个注解的作用和属性与Component一摸一样,他们三个是spring框架为我们提供明确的三层使用的注解<br>      使我们的三层对象更加清晰</p>
-<h2 id="2-注入数据"><a href="#2-注入数据" class="headerlink" title="2.注入数据:"></a>2.注入数据:</h2><p>和xml配置文件里的<property></property>子标签一样<br> @Autowired<br>       作用:自动按照类型注入,只要容器中有唯一的bean对象类型和要注入的变量类型匹配,就可以注入成功<br>            如果Ioc容器有多个类型匹配时:(下方代码介绍)<br>       出现位置:<br>           可以是变量上,方法上</p>
-<h2 id="3-改变作用范围"><a href="#3-改变作用范围" class="headerlink" title="3.改变作用范围:"></a>3.改变作用范围:</h2><p>和xml配置文件里的隐含属性scope一样<br> @Scope<br>       作用:指定bean作用范围<br>        属性:<br>            value:指定范围的取值,常用取值:singleton prototype,默认单例</p>
-<h2 id="4-和生命周期有关的"><a href="#4-和生命周期有关的" class="headerlink" title="4.和生命周期有关的:"></a>4.和生命周期有关的:</h2><p>xml配置文件里的init-method,destroy-method一样<br> @PreDestory<br>       作用:用于指定销毁方法<br> @PostConstruct<br>       作用:用于指定初始化方法</p>
-<h2 id="注入数据时遇到的问题"><a href="#注入数据时遇到的问题" class="headerlink" title="注入数据时遇到的问题"></a>注入数据时遇到的问题</h2><h3 id="在使用-Autowired-时自动匹配"><a href="#在使用-Autowired-时自动匹配" class="headerlink" title="在使用  @Autowired 时自动匹配"></a>在使用  <code>@Autowired</code> 时自动匹配</h3><p>在属性或方法上添加该注解,如:<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line">  <span class="keyword">private</span> IAccountDao accountDao2;</span><br></pre></td></tr></table></figure><br> 当IAccountDao接口类只有一个实现类的时候,注解会自动去找实现该接口的类,创建对象放入ioc容器中</p>
-<h3 id="在使用-Autowired-时遇到多个匹配类"><a href="#在使用-Autowired-时遇到多个匹配类" class="headerlink" title="在使用  @Autowired 时遇到多个匹配类"></a>在使用  <code>@Autowired</code> 时遇到多个匹配类</h3><p>在不做处理情况下,系统会报错,因为spring框架不知道去解析哪个类<br>解决办法如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">@Repository(value = &quot;accountDao1&quot;)</span><br><span class="line">public class IAccountDaoImp implements  IAccountDao &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public void saveAcocunt() &#123;</span><br><span class="line">        System.out.println(&quot;保存成功&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">---------------------------------------------------------</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@Repository(value = &quot;accountDao1&quot;)</span><br><span class="line">public class IAccountDaoImp implements  IAccountDao &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public void saveAcocunt() &#123;</span><br><span class="line">        System.out.println(&quot;保存成功&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">----------------------------------------------------------</span><br><span class="line"></span><br><span class="line">@Autowired</span><br><span class="line">    private IAccountDao accountDao2;//如果有多个匹配的类型,会根据变量名(repository的value值)到ioc容器中//匹配</span><br></pre></td></tr></table></figure>
-<p>如果有多个匹配的类型,会根据变量名(在@repository注解的类去找value值)到ioc容器中匹配</p>
+        <h1 id="这里主要介绍两种IOC配置方法"><a href="#这里主要介绍两种IOC配置方法" class="headerlink" title="这里主要介绍两种IOC配置方法"></a>这里主要介绍两种IOC配置方法</h1><a id="more"></a>
+<h2 id="1-基于xml的ioc配置"><a href="#1-基于xml的ioc配置" class="headerlink" title="1.基于xml的ioc配置"></a>1.基于xml的ioc配置</h2><p>在这种方式配置下,首先引入spring文档,由于对象间层层嵌套的关系,需要根据每个对象内的成员变量对象来创建bean对象<br>比如name中的属性必须要是在property类中存在的成员变量<code>&lt;property name=&quot;iAccountDao&quot; ref=&quot;accountDao&quot;&gt;&lt;/property&gt;</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/beans/spring-beans.xsd"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--配置service--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"accountService"</span> <span class="attr">class</span>=<span class="string">"com.rwh.service.AccountServiceImp"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--注入dao对象,必须是AccountServiceImp类中出现的对象--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"iAccountDao"</span> <span class="attr">ref</span>=<span class="string">"accountDao"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--配置dao对象--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"accountDao"</span> <span class="attr">class</span>=<span class="string">"com.rwh.dao.AccountDaoImp"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"runner"</span> <span class="attr">ref</span>=<span class="string">"runner"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--配置QueryRunner--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"runner"</span> <span class="attr">class</span>=<span class="string">"org.apache.commons.dbutils.QueryRunner"</span> <span class="attr">scope</span>=<span class="string">"prototype"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--注入数据源--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"ds"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 配置数据源 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"dataSource"</span> <span class="attr">class</span>=<span class="string">"com.mchange.v2.c3p0.ComboPooledDataSource"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--连接数据库的必备信息--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClass"</span> <span class="attr">value</span>=<span class="string">"com.mysql.jdbc.Driver"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"jdbcUrl"</span> <span class="attr">value</span>=<span class="string">"jdbc:mysql://localhost:3306/ssm"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"user"</span> <span class="attr">value</span>=<span class="string">"root"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"637425"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="注意-使用-Autowired或是使用-set方法注入对象-必须在xml或者-Bean下-ioc容器中存在该对象"><a href="#注意-使用-Autowired或是使用-set方法注入对象-必须在xml或者-Bean下-ioc容器中存在该对象" class="headerlink" title="注意:使用 @Autowired或是使用 set方法注入对象,必须在xml或者@Bean下,ioc容器中存在该对象"></a>注意:使用 <code>@Autowired</code>或是使用 <code>set</code>方法注入对象,必须在xml或者@Bean下,ioc容器中存在该对象</h3><p>##2.基于注解方式的配置<br>在我们之前通过注解方式是通过<code>&lt;!--告知spring在创建容器时要扫描的包，配置所需要的标签不是在beans的约束中，而是一个名称为
+    context名称空间和约束中--&gt;
+    &lt;context:component-scan base-package=&quot;com.rwh&quot;&gt;&lt;/context:component-scan&gt;</code><br>来告诉spring通过扫描包获取被注解的类<br>现在可以在一个类中加上<code>@Configuration</code>方式来告诉Spring这是一个配置类,从而可以省区在xml中添加扫描包的方法.<br>       @Configuration<br>           作用:指定当前类是一个配置类<br>           细节:当配置类作为AnnotationConfigApplicationContext对象创建的参数时,该注解可写可不写<br>       @ComponentScan<br>           作用:通过注解指定spring在创建容器时要扫描的包<br>           属性:value属性:它和basePackages作用是一样的,都是用于指定创建容器时要扫描的包<br>               使用此注解就等同于在xml中配置了<br>               &lt;context:component-scan base-package=”com.rwh”&gt;</context:component-scan><br>       @Bean<br>           作用:把当前方法产生的对象存入spring的ioc容器中<br>           属性:<br>               name:指定bean对象的id,默认值为当前方法的名称<br>           细节:<br>               当我们使用注解来配置文件时,如果方法有参数,spring框架会去容器中查找有没有可用的bean对象<br>               查找的方式和Autowired一样<br>       @Import<br>           作用:用于导入其他的配置类<br>       @PropertySource<br>           作用:指定properties文件的位置<br>           属性:<br>               value:指定文件的名称和路径<br>        关键字:classpath:当前类路径</p>
+<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p>这是配置类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(&#123;<span class="string">"com.rwh"</span>&#125;)<span class="comment">//扫描的是注解过的包</span></span><br><span class="line"><span class="meta">@Import</span>(jdbcConfig<span class="class">.<span class="keyword">class</span>)//使用此注解时,引入的配置可以不写@<span class="title">Configuration</span>注解,且被引入的类为子配置 类</span></span><br><span class="line">@PropertySource("classpath:jdbc.properties")</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringConfiguration</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是测试类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 使用Junit单元测试：测试我们的配置</span></span><br><span class="line"><span class="comment"> * Spring整合junit的配置</span></span><br><span class="line"><span class="comment"> *      1、导入spring整合junit的jar(坐标)</span></span><br><span class="line"><span class="comment"> *      2、使用Junit提供的一个注解把原有的main方法替换了，替换成spring提供的</span></span><br><span class="line"><span class="comment"> *             <span class="doctag">@Runwith</span></span></span><br><span class="line"><span class="comment"> *      3、告知spring的运行器，spring和ioc创建是基于xml还是注解的，并且说明位置</span></span><br><span class="line"><span class="comment"> *          <span class="doctag">@ContextConfiguration</span></span></span><br><span class="line"><span class="comment"> *                  locations：指定xml文件的位置，加上classpath关键字，表示在类路径下</span></span><br><span class="line"><span class="comment"> *                  classes：指定注解类所在地位置</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *   当我们使用spring 5.x版本的时候，要求junit的jar必须是4.12及以</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@RunWith</span>(SpringJUnit4ClassRunner<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">@<span class="title">ContextConfiguration</span>(<span class="title">classes</span> </span>= SpringConfiguration<span class="class">.<span class="keyword">class</span>)//此处写了<span class="title">SpringConfiguration</span>类就不需要写@<span class="title">Configuration</span>注解了</span></span><br><span class="line">//这是xml下的路径:@ContextConfiguration(locations = "classpath:bean.xml")</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">accountTest</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -282,7 +283,7 @@
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/22/Spring-%E9%80%9A%E8%BF%87%E6%B3%A8%E8%A7%A3%E9%85%8D%E7%BD%AExml%E5%88%9B%E5%BB%BAbean/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/30/Spring-IOC%E9%85%8D%E7%BD%AE/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -296,18 +297,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/11/30/Spring-IOC%E9%85%8D%E7%BD%AE/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Spring-IOC配置
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/11/22/Spring-%E5%9F%BA%E4%BA%8Exml%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%88%9B%E5%BB%BAbean/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Spring-基于xml配置文件创建bean</div>
+    <a href="/2019/11/22/Spring-%E9%80%9A%E8%BF%87%E6%B3%A8%E8%A7%A3%E9%85%8D%E7%BD%AExml%E5%88%9B%E5%BB%BAbean/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring-通过注解配置xml创建bean</div>
       <i class="icon-circle-right"></i>
     </a>
   
