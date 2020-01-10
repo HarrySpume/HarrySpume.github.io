@@ -183,7 +183,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>之前介绍过通过<bean>标签创建对象,接下来介绍通过注解方式创建bean对象的方式</p>
+        <p>之前介绍过通过<bean>标签创建对象,接下来介绍通过注解方式创建bean对象的方式</bean></p>
 <a id="more"></a>
 <h1 id="注解总体上分为四种"><a href="#注解总体上分为四种" class="headerlink" title="注解总体上分为四种"></a>注解总体上分为四种</h1><h2 id="1-对象创建"><a href="#1-对象创建" class="headerlink" title="1.对象创建:"></a>1.对象创建:</h2><p>和xml配置文件里的<bean></bean>标签一样<br> @Component<br>      作用:把当前类对象存入spring容器中<br>      属性:<br>           value:用于指定该类的bean在spring容器种的id,默认是当前名,首字母改为小写<br>      @Controller:一般用于表现层<br>      @Service:一般用于业务层<br>      @Repository:一般用于持久层<br>      以上三个注解的作用和属性与Component一摸一样,他们三个是spring框架为我们提供明确的三层使用的注解<br>      使我们的三层对象更加清晰</p>
 <h2 id="2-注入数据"><a href="#2-注入数据" class="headerlink" title="2.注入数据:"></a>2.注入数据:</h2><p>和xml配置文件里的<property></property>子标签一样<br> @Autowired<br>       作用:自动按照类型注入,只要容器中有唯一的bean对象类型和要注入的变量类型匹配,就可以注入成功<br>            如果Ioc容器有多个类型匹配时:(下方代码介绍)<br>       出现位置:<br>           可以是变量上,方法上</p>
@@ -372,7 +372,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 追逐
+    		&copy; 2020 追逐
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
